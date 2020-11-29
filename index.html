@@ -1,0 +1,3682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>C# Pytania kwalfikacyjne, Błędy, Sztuczki, Async problemy, 
+        i Pattern Matching </title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,900&amp;subset=latin-ext" rel="stylesheet" />
+    <!-- Shower Theme -->
+    <link rel="stylesheet" href="vendors/shower-ribbon/styles/screen-16x9.css" />
+    <link rel="stylesheet" href="vendors/shower-CezaryWalenciuk/styles/main.css" />
+    <!-- Prism.js -->
+    <link rel="stylesheet" href="vendors/prism/prism.css" />
+    <link rel="stylesheet" href="vendors/prism/custom-prism.css" />
+    <link rel="stylesheet" href="codegrid.css" />
+</head>
+<body class="shower list">
+    <header class="caption">
+        <h1>C# Pytania kwalfikacyjne, Błędy, Sztuczki, Async problemy, 
+            i Pattern Matching </h1>
+        <p></p>
+    </header>
+
+    <section class="slide front-page">
+
+        <div class="details">
+            <!-- 1. Avatar -->
+
+
+            <h2>Cezary Walenciuk</h2>
+
+            <!-- 3. Presentation title -->
+            <h2 class="bigbig"><strong style="font-size: 35px;  line-height: 1.3;">
+                C#
+                <span class="titlec1">Pytania kwalfikacyjne</span>,
+                <span class="titlec2">Błędy</span><br />
+                <span class="titlec3">Sztuczki</span><br />
+                <span class="titlec1">Async problemy</span><br />
+                i Pattern Matching</strong>
+            
+            </h2>
+
+
+
+
+
+            <!-- 5. Contact the speaker -->
+            <h2><a href="https://twitter.com/WalenciukC">@walenciukC</a></h2>
+        </div>
+        <div>
+
+
+            <!-- 2. Speaker -->
+
+        </div>
+        <div class="imag">
+            <img src="images/my-avatar.jpg" alt="Speaker">
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 1 : Używanie złej kolekcji
+        </span></span>
+    </section>
+    <section class="slide cream smaller  compact ">
+        <ol class="nonumbers">
+            <li>Array</li>
+            <li class="next">ArrayList</li>
+            <li class="next">BitArray</li>
+            <li class="next">BitVectory32</li>
+            <li class="next">Dictionary</li>
+            <li class="next">HashTable</li>
+            <li class="next">HybridDictionary</li>
+        </ol>
+    </section>
+    <section class="slide cream smaller  compact ">
+        <ol class="nonumbers">
+            <li>Span</li>
+            <li class="next">NameValueCollection</li>
+            <li class="next">OrderedDictionary</li>
+            <li class="next">Queque</li>
+            <li class="next">ConcurrentQueue</li>
+            <li class="next">SortedList</li>
+            <li class="next">Stack</li>
+        </ol>
+    </section>
+    <section class="slide cream smaller  compact ">
+        <ol class="nonumbers">
+            <li>List</li>
+            <li class="next">ConcurrentStack</li>
+            <li class="next">StringCollection</li>
+            <li class="next">StringDictionary</li>
+            <li class="next">ReadOnlyCollection</li>
+            <li class="next">SortedList</li>
+            <li class="next">Stack</li>
+        </ol>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 1 : Używanie złej kolekcji</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 42px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 42px !important;">
+                        ArrayList array = new ArrayList();
+                        Queue qq = new Queue();
+                        Stack ss = new Stack();
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 1 : Używanie złej kolekcji</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        Dictionary&#x3C;int, string&#x3E; dictionary =
+                        new Dictionary&#x3C;int, string&#x3E;();
+            
+                        List&#x3C;string&#x3E; list = new List&#x3C;string&#x3E;();
+            
+                        Queue&#x3C;int&#x3E; q = new Queue&#x3C;int&#x3E;();
+                        Stack&#x3C;int&#x3E; stack = new Stack&#x3C;int&#x3E;();
+                        LinkedList&#x3C;string&#x3E; linked = new LinkedList&#x3C;string&#x3E;();
+            
+                        ImmutableList&#x3C;string&#x3E; listIn = list.ToImmutableList();
+                        ReadOnlyCollection&#x3C;string&#x3E; s = new ReadOnlyCollection&#x3C;string&#x3E;(list);
+            
+                        Span&#x3C;byte&#x3E; bytes = new Span&#x3C;byte&#x3E;();
+                        Memory&#x3C;byte&#x3E; bytes2 = new Memory&#x3C;byte&#x3E;();
+            
+                        OrderedDictionary ordered = new OrderedDictionary();
+                        StringCollection stringCollection = new StringCollection();
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/collection.PNG" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/22.png" alt="blog">
+            <figcaption class="white">Copyright © 2019 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/Podchwytliwe pytania-03.png" alt="blog">
+            <figcaption class="white">Copyright © 2019 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Jak ograniczyć typy generyczne?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 32px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 32px !important;">
+                        public class UsingEnum&#x3C;T&#x3E; where T : System.Enum { }
+
+                        public class MyGenericClass&#x3C;T&#x3E; where T : IComparable&#x3C;T&#x3E;, new()
+                        {
+                            // The following line is not possible without new() constraint:
+                            T item = new T();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 2 : Try / Catch
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 2 : Try / Catch</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 42px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 42px !important;">
+                        try
+                        {
+            
+                        }
+                        catch (Exception)
+                        {
+            
+                            //NIC
+
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 2 : Try / Catch</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 32px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 32px !important;">
+                        public static void Method2(object a)
+                        {
+                            if (a == null)
+                                throw new ArgumentNullException("Jest null");
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 2 : Try / Catch</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 37px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 37px !important;">
+                        try
+                        {
+                            number = int.Parse(mystr);
+                            // number
+                        }
+                        catch (FormatException)
+                        {
+                            number = 11;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 2 : Try / Catch</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        //Warto też pamiętać o tym, że try-catch nie powinno nam służyć
+                        //jako mechanizm kontroli przepływu aplikacji.
+
+                        string mystr = "1";
+                        int number;
+
+                        if (int.TryParse(mystr, out number))
+                        {
+                            // number
+                        }
+                        else
+                        {
+                            //domyślna wartość
+                            number = 11;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 2 : Try / Catch</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        try
+                        {
+            
+                        }
+                        catch (Exception ex)
+                        {
+                            throw;
+                        }
+            
+            
+                        try
+                        {
+            
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/Podchwytliwe pytania-08.png" alt="blog">
+            <figcaption class="white">Copyright © 2019 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/odp-01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2019 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 3 : Mylenie typu wartościowego z referencyjnym
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 3 : Mylenie typu wartościowego z referencyjnym</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        public class SomeClass
+                        {
+                            public int Value;
+                        }
+                    
+                        public class ClassDefault
+                        {
+                            public static int defaultInt;
+                            public static string defaultString;
+                            public static SomeClass defaultSomeClass;
+                            public static List&#x3C;SomeClass&#x3E; defaultListOfSomeClass;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 3 : Mylenie typu wartościowego z referencyjnym</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        public class Main_Errors_3_ReferencesTypes
+                        {
+                            public static void Run()
+                            {
+                                int a = ClassDefault.defaultInt;
+                                int b = ClassDefault.defaultInt;
+                                a = a + 2;
+                                b = b + 6;
+                    
+                    
+                                ClassDefault.defaultSomeClass = new SomeClass();
+                                //referencje
+                                SomeClass sc1 = ClassDefault.defaultSomeClass;
+                                SomeClass sc2 = ClassDefault.defaultSomeClass;
+                    
+                                sc1.Value = 2;
+                                sc2.Value = 3;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 3 : Mylenie typu wartościowego z referencyjnym</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        class ClassDefaultStruct
+                        {
+                            public static Point defaultThree;
+                        }
+                    
+                        public struct Point
+                        {
+                            public int X { get; set; }
+                            public int Y { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 3 : Mylenie typu wartościowego z referencyjnym</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        ClassDefaultTest.defaultThree = new Point();
+
+                        Point sc1 = ClassDefaultTest.defaultThree;
+                        Point sc2 = ClassDefaultTest.defaultThree;
+                        
+                        sc1.X = 2;
+                        sc2.X = 3;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/01.png" alt="blog">
+            <figcaption class="white">Copyright © 2019 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/odp-02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2019 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 4 : Mylenie  klasy z rekordem
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 4 : Mylenie  klasy z rekordem</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public record Record1(int  FirstNumber, int SecondNumber);
+
+                        //Czy Rekordy są typem wartościowym, 
+                        //Czy typem referencyjnym?
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 4 : Mylenie klasy z rekordem</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 37px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 37px !important;">
+                        Record1 rA = new(1, 2);
+                        Record1 rAtest = rA;
+                        Console.WriteLine(ReferenceEquals(rA, rAtest));
+
+                        //true
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 4 : Mylenie klasy z rekordem</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        //Podobne do tej klasy, ale to jednak nie to samo
+                        //o tym za chwilę
+
+                        public class Record3
+                        {
+                            public string FirstNumber { get; init; }
+                    
+                            public string SecondNumber { get; init; }
+                    
+                            public Record3(string firstName, string lastName)
+                            {
+                                FirstName = firstName;
+                                LastName = lastName;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 4 : Mylenie  klasy z rekordem</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        Console.WriteLine($"Record1 rA = new(1, 2);");
+                        Console.WriteLine($"Record1 rB = new(1, 2);");
+            
+                        Console.WriteLine($"Check if they are Equal : {Equals(rA, rB)}");
+                        Console.WriteLine($"Check if they are ReferenceEquals : " +
+                            $"{ ReferenceEquals(rA, rB)}");
+            
+                        Console.WriteLine($"Hash Code rA: {rA.GetHashCode()}");
+                        Console.WriteLine($"Hash Code rB: {rB.GetHashCode()}");
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/records.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2019 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 5 : Porównywanie napisów
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 5 : Porównywanie napisów</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        string s0 = "A";
+
+                        Console.WriteLine(s0 == "a"); //false
+                        Console.WriteLine(s0.Equals("a")); //false
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.Ordinal)); //false
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.CurrentCulture)); //false
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.OrdinalIgnoreCase)); //true
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.CurrentCultureIgnoreCase)); //true
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.InvariantCulture)); //false
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.InvariantCultureIgnoreCase)); //true
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 5 : Porównywanie napisów</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        string s0 = "A";
+                        
+                        Console.WriteLine(s0 == "a"); //false
+                        Console.WriteLine(s0.Equals("a")); //false
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.Ordinal)); //false
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.CurrentCulture)); //false
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.OrdinalIgnoreCase)); //true
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.CurrentCultureIgnoreCase)); //true
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.InvariantCulture)); //false
+            
+                        Console.WriteLine(s0.Equals("a",
+                            StringComparison.InvariantCultureIgnoreCase)); //true
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/lingatura-01.PNG" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 5 : Porównywanie napisów</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        string s = "ß";
+
+                        Console.WriteLine(s == "ss"); //false
+                        Console.WriteLine(s.Equals("ss")); //false
+                        Console.WriteLine(s.Equals("ss",
+                            StringComparison.Ordinal)); //false
+            
+                        Console.WriteLine(s.Equals("ss",
+                            StringComparison.CurrentCulture)); //true
+            
+                        Console.WriteLine(s.Equals("ss",
+                            StringComparison.OrdinalIgnoreCase)); //false
+            
+                        Console.WriteLine(s.Equals("ss",
+                            StringComparison.CurrentCultureIgnoreCase)); //true
+            
+                        Console.WriteLine(s.Equals("ss",
+                            StringComparison.InvariantCulture)); //true
+            
+                        Console.WriteLine(s.Equals("ss",
+                            StringComparison.InvariantCultureIgnoreCase)); //true
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/lingatura-02.PNG" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 5 : Porównywanie napisów</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        string s1 = "æ";
+
+                        Console.WriteLine(s1 == "ae"); //false
+                        Console.WriteLine(s1.Equals("ae")); //false
+                        Console.WriteLine(s1.Equals("ae",
+                            StringComparison.Ordinal)); //false
+            
+                        Console.WriteLine(s1.Equals("ae",
+                            StringComparison.CurrentCulture)); //true
+            
+                        Console.WriteLine(s1.Equals("ae",
+                            StringComparison.OrdinalIgnoreCase)); //false
+            
+                        Console.WriteLine(s1.Equals("ae",
+                            StringComparison.CurrentCultureIgnoreCase)); //true
+            
+                        Console.WriteLine(s1.Equals("ae",
+                            StringComparison.InvariantCulture)); //true
+            
+                        Console.WriteLine(s1.Equals("ae",
+                            StringComparison.InvariantCultureIgnoreCase)); //true
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 6 : Uwalnianie zasobów
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 6 : Uwalnianie zasobów</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        string line;
+
+                        StreamReader reader = null;
+                        try
+                        {
+                            reader = new StreamReader("file.txt");
+                            line = reader.ReadLine();
+                        }
+                        finally
+                        {
+                            if (reader != null)
+                                reader.Dispose();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 6 : Uwalnianie zasobów</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        string line;
+
+                        using (StreamReader reader = new StreamReader("file.txt"))
+                        {
+                            line = reader.ReadLine();
+                        }
+
+                        Console.WriteLine(line);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/15.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/23.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Co robi metoda Finalize, Dispose?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public void GCTestFinalize()
+                        {
+                            StreamWriter stream = File.CreateText("a.txt");
+                            stream.Write("TEST");
+                            
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+                            
+                            File.Delete("a.txt");
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+               
+                </div>
+                <div class="odpowiedz">
+                   
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamGrey  compact">
+        <h2>Czy metoda finalize zawsze się wykona?</h2>
+        <ol>
+            <li class="next">Nie. Gdy proces aplikacja natychmiastowo się zamknie</li>
+            <li class="next">Nie. Jeśli inny finalize wyrzucił wyjątek</li>
+        </ol>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 7 : First i czy zawsze tak będzie
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 7 : First i czy zawsze tak będzie</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public static bool IsPrime(int number)
+                        {
+                            if (number <= 1) return false;
+                            if (number == 2) return true;
+                            if (number % 2 == 0) return false;
+                
+                            var boundary = (int)Math.Floor(Math.Sqrt(number));
+                
+                            for (int i = 3; i <= boundary; i += 2)
+                                if (number % i == 0)
+                                    return false;
+                
+                            return true;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 7 : First i czy zawsze tak będzie</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        List&#x3C;int&#x3E; numbers = new List&#x3C;int&#x3E;()
+                            { 200, 400, 500, 933, 130, 150, 230, 240, 525, 134, 516 };
+                
+                        var first = numbers.Where
+                            (x =&#x3E; IsPrime(x)).First();
+                
+                        var first2 = numbers.First(x =&#x3E; IsPrime(x));
+                
+                        var first3 = numbers.FirstOrDefault(x =&#x3E; IsPrime(x));
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/19.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 8 : Łączenie napisów
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 8 : Łączenie napisów</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 37px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 37px !important;">
+                        //INCORRECT
+                        List&#x3C;string&#x3E; values = new List&#x3C;string&#x3E;()
+                        { &#x22;Hello &#x22;, &#x22;far &#x22;, &#x22;Home &#x22;, &#x22;!&#x22; };
+
+                        string outputValue = string.Empty;
+            
+                        foreach (var value in values)
+                        {
+                            outputValue += value;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 8 : Łączenie napisów</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        outputValue = string.Empty;
+
+                        //CORRECT
+                        StringBuilder outputValueBuilder = new StringBuilder();
+                        foreach (var value in values)
+                        {
+                            outputValueBuilder.Append(value);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 9 : Wyrażenia logiczne
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 9 : Wyrażenia logiczne</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        bool isTrue = true;
+
+                        if (isTrue == true)
+                        {
+                            // Code
+                        }
+            
+                        if (isTrue)
+                        {
+                            // Code
+                        }
+            
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Błąd numer 10 : Niezakładaj, że zawsze tak będzie
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Błąd numer 10 : Niezakładaj, że zawsze tak będzie</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size:31px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 31px !important;">
+                        var person = new Person();
+
+                        //INCORRECT
+                        var woman1 = (Woman)person;
+            
+                        //CORRECT
+                        var woman2 = person as Woman;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Po co jest dynamic?
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/18.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Po co jest dynamic?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        //Umie&#x15B;&#x107; cokolwiek chcesz
+                        dynamic d1 = &#x22;OK&#x22;;
+                        d1 = 111;
+                        d1 = &#x22;Also Ok&#x22;;
+            
+                        //Wszystko jest okej dop&#xF3;ki dynamiczny obiekt ma
+                        //metod&#x119; Remove i toArray()
+                        dynamic d2 = new List&#x3C;int&#x3E;() { 4, 5, 5 };
+            
+                        dynamic operationStatus = d2.Remove(4);
+            
+                        dynamic array = d2.ToArray();
+            
+                        d2 = new List&#x3C;double&#x3E;() { 1.5, 2.5, 7.5, };
+            
+                        dynamic operationStatus2 = d2.Remove(1.5);
+            
+                        dynamic array2 = d2.ToArray();
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Po co jest dynamic?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        dynamic d2 = new List&#x3C;int&#x3E;() { 4, 5, 5 };
+
+                        try
+                        {
+                            //metody
+                            dynamic sum = d2.Sum();
+                        }
+                        catch (Exception)
+                        {
+            
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Po co jest dynamic?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        dynamic stuff = JsonConvert.DeserializeObject
+                        ("{ 'Name': 'Jon Smith'," +
+                        " 'Address':" +
+                        "{ 'City': 'New York', 'State': 'NY' }," +
+                        " 'Age': 42 }");
+        
+                        string name = stuff.Name;
+                        string address = stuff.Address.City;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Po co jest dynamic?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        bool IsBlocked = true;
+
+                        dynamic person = new System.Dynamic.ExpandoObject();
+                        person.Name = "Cezary";
+                        person.Age = 12;
+            
+                        if (IsBlocked)
+                        {
+                            person.StatusBlocked = true;
+                        }
+            
+                        string json = Newtonsoft.Json.JsonConvert.
+                            SerializeObject(person);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>DuckTyping w C#?
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">DuckTyping w C#?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        namespace ConsoleAppPresentation.NewDomain
+                        {
+                            public abstract class Employee
+                            {
+                                public string Name { get; set; }
+                            }
+                            public class HR : Employee { }
+                            public class Programmer : Employee { }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">DuckTyping w C#?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        namespace ConsoleAppPresentation.OldDomain
+                        {
+                            public abstract class Employee
+                            {
+                                public string Name { get; set; }
+                            }
+                            public class HR : Employee { }
+                            public class Programmer : Employee { }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">DuckTyping w C#?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 18px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 18px !important;">
+                        public static void Run4()
+                        {
+                            var s1 = GetNameOfEmployee
+                                (new OldDomain.HR() { Name = "CW" });
+                
+                            var s2 = GetNameOfEmployee
+                                (new NewDomain.Programmer { Name = "MS" });
+                
+                            var s3 = GetNameOfEmployee
+                                (new OldDomain.Programmer { Name = "KL" });
+                
+                            var s4 = GetNameOfEmployee
+                                (new NewDomain.HR { Name = "PL" });
+                
+                
+                            var s = ConvertOld
+                                (new OldDomain.Programmer() { Name = "PL" });
+                        }
+                
+                        public static string GetNameOfEmployee(dynamic employee)
+                        {
+                            return employee.Name;
+                        }
+                
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">DuckTyping w C#?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        public static NewDomain.Employee ConvertOld
+                            (OldDomain.Employee employee)
+                        {
+                            if (employee == null)
+                                return null;
+
+                            if (employee is OldDomain.HR)
+                                return ConvertInternal((OldDomain.HR)employee);
+
+                            if (employee is OldDomain.Programmer)
+                                return ConvertInternal((OldDomain.Programmer)employee);
+
+                            throw new ArgumentException("Unknown Employee", nameof(employee));
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">DuckTyping w C#?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        public static NewDomain.Employee ConvertOld
+                            (OldDomain.Employee employee)
+                        {
+                            if (employee == null)
+                                return null;
+
+                            if (employee is OldDomain.HR)
+                                return ConvertInternal((OldDomain.HR)employee);
+
+                            if (employee is OldDomain.Programmer)
+                                return ConvertInternal((OldDomain.Programmer)employee);
+
+                            throw new ArgumentException("Unknown Employee", nameof(employee));
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">DuckTyping w C#?</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        public static NewDomain.Employee Convert
+                        (OldDomain.Employee employee)
+                        {
+                            return employee != null ?
+                                ConvertInternal((dynamic)employee) : null;
+                        }
+            
+                        public static NewDomain.HR ConvertInternal
+                            (OldDomain.HR a)
+                        {
+                            //Konwersja starego na nowy
+                            return new NewDomain.HR();
+                        }
+            
+                        public static NewDomain.Programmer ConvertInternal
+                            (OldDomain.Programmer a)
+                        {
+                            //Konwersja starego na nowy
+                            return new NewDomain.Programmer();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamP">
+        <span class="shout colors" ><span>Sztuczki w C#
+        </span></span>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Sztuczki w C# : Yield
+        </span></span>
+    </section> 
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Sztuczki w C# : Yield</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        foreach (var item in YieldCollectionsEx.NumberCollection())
+                        {
+                            Console.Write(item + " ,");
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Sztuczki w C# : Yield</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size:32px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 32px !important;">
+                        public static class YieldCollectionsEx
+                        {
+                            public static IEnumerable<int> NumberCollection()
+                            {
+                                yield return 1;
+                                yield return 2;
+                                yield return 3;
+                                yield return 4;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Sztuczki w C# : Yield</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        public interface IEnumerable&#x3C;out T&#x3E; : IEnumerable
+                        {
+                            IEnumerator&#x3C;T&#x3E; GetEnumerator();
+                        }
+
+                        public interface IEnumerator&#x3C;T&#x3E;&#x3C;/T&#x3E;
+                        {
+                            T Current { get; }
+                            bool MoveNext();
+                            void Reset();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Sztuczki w C# : Yield</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        var collection = YieldCollections.
+                        RandomNumberCollection()
+                        .Take(500);
+            
+                        foreach (var item in collection)
+                        {
+                            Console.Write(item + " ,");
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Sztuczki w C# : Yield</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public static IEnumerable&#x3C;int&#x3E; RandomNumberCollection()
+                        {
+                            while (true)
+                            {
+                                Random r = new Random(Guid.NewGuid()
+                                    .GetHashCode());
+
+                                int number = r.Next();
+
+                                yield return number;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/02.jfif" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>2: Sztuczki w C# : Tworzenie kolekcji
+        </span></span>
+    </section> 
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">2: Sztuczki w C# : Tworzenie kolekcji</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        public class Gamer
+                        {
+                            public string Name { get; set; }
+                            public int Age { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">2: Sztuczki w C# : Tworzenie kolekcji</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        Gamer gammer1 = new Gamer
+                        {
+                            Name = &#x22;John Smith&#x22;,
+                            Age = 27
+                        };
+            
+                        int[] tab = new[] { 1, 2, 3 };
+                        List&#x3C;int&#x3E; list = new List&#x3C;int&#x3E;()
+                        {
+                            1,2,3,4,5,6,7,8,9,0
+                        };
+            
+            
+                        Dictionary&#x3C;int, int&#x3E; d =
+                            new Dictionary&#x3C;int, int&#x3E;()
+                        {
+                            {1,2}, {3,4}, {5,6}, {7,8}, {9,0}
+                        };
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>3: Action i Func
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">3: Sztuczki w C# : Action i Func</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        public delegate string calculateAgeEraFunctionPointer(int year);
+
+                        public delegate string changeTitleFunctionPointer(string name);
+
+                        public delegate void showTwoStringsPointer(string p1, string p2);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">3: Sztuczki w C# : Action i Func</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        //public delegate string calculateAgeEraFunctionPointer(int year);
+                        Func&#x3C;int, string&#x3E; funcPointer = methods.CalculateAgeEra;
+
+                        //public delegate string changeTitleFunctionPointer(string name);
+                        Func&#x3C;string, string&#x3E; titlePointer = methods.UpperCaseName;
+
+                        public delegate void showTwoStringsPointer(string p1, string p2);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/funfdnfjdnf_thumb2_thumb_1.gif" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">3: Sztuczki w C# : Action i Func</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 26px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 26px !important;">
+                        //public delegate void showTwoStringsPointer(string p1, string p2);
+
+                        Action&#x3C;string, string&#x3E; show;
+
+                        if (f == "1")
+                            show = methods.Show;
+                        else
+                            show = methods.Show2;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/gggg3_thumb2_thumb.gif" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">3: Sztuczki w C# : Action i Func</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        private static void DynamicAdd()
+                        {
+                            var m5 = GetMultiX(5);
+                            var m10 = GetMultiX(10);
+                            Console.WriteLine(m5(10));
+                            Console.WriteLine(m10(10));
+                        }
+                        
+                        private static Func&#x3C;int, int&#x3E; GetMultiX(int staticVal)
+                        {
+                            return x =&#x3E; staticVal * x;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Sztuczki w C# 4: Wyrażenia drzewiaste czyli tworzenie dynamiczne wyrażenia Linq
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">4: Wyrażenia drzewiaste czyli tworzenie dynamiczne wyrażenia Linq</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        public class PersonEntity
+                        {
+                            public string Name { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">4: Wyrażenia drzewiaste czyli tworzenie dynamiczne wyrażenia Linq</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        public static Expression&#x3C;Func&#x3C;T, bool&#x3E;&#x3E;  
+                            DynamicWhere&#x3C;T&#x3E;(object value, string nameProperty)
+                        {
+                            var item = Expression.Parameter(typeof(T), &#x22;item&#x22;);
+                        
+                            var prop = Expression.Property(item, nameProperty);
+                        
+                            var consVal = Expression.Constant(value);
+                        
+                            var equal = Expression.Equal(prop, consVal);
+                        
+                            var lambda = Expression.Lambda&#x3C;Func&#x3C;T, bool&#x3E;&#x3E;(equal, item);
+                        
+                            return lambda;
+                        } 
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">4: Wyrażenia drzewiaste czyli tworzenie dynamiczne wyrażenia Linq</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        IQueryable&#x3C;PersonEntity&#x3E; list = new List&#x3C;PersonEntity&#x3E;()
+                        {
+                            new PersonEntity() {Name =&#x22;Kl&#x22; },
+                            new PersonEntity() {Name =&#x22;Cez&#x22; },
+
+                        }.AsQueryable(); ;
+
+                        var lambda = DynamicWhere&#x3C;PersonEntity&#x3E;(&#x22;Cez&#x22;, &#x22;Name&#x22;);
+
+                        var result = list.Where(lambda);
+
+                        var listre = result.ToList();
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Sztuczki w C# 5 : Null coalescing operator
+        </span></span>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">5 : Null-coalescing-operator</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        int? nullValue = null;
+                        int someValue = 5;
+            
+                        var result = nullValue ?? someValue;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">5 : Null-coalescing-operator</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        string a1 = null;
+                        string a2 = null;
+                        string a3 = "BE";
+                        string a4 = "AA";
+            
+                        var res = a1 ?? a2 ?? a3;
+            
+                        var res2 = a3 ?? a2 ?? a1;
+            
+                        var res3 = a1 ?? a3 ?? a4 ?? a2;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/example.PNG" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">5 : Null-coalescing-operator</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 39px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 39px !important;">
+                        List&#x3C;int?&#x3E; list =
+                        new List&#x3C;int?&#x3E;
+                        { null, 2, 3, 4, null, 5 };
+        
+                        int sum = list.Sum(k =&#x3E; k ?? 0);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Sztuczki w C#  : String Interpolation
+        </span></span>
+    </section> 
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">6 : StringInterpolation</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        object someVariableOne = "Cezary";
+                        object someVariableTwo = "Staszek";
+            
+                        var bigString =
+                            string.Format("1 => : {0}, " +
+                            "2 =>: {1}",
+                            someVariableOne, someVariableTwo);
+            
+                        //Nowe od c# 6.0
+                        var bigString2 = $"1 => : {someVariableOne}," +
+                            $" 2 => : {someVariableTwo}";
+            
+                        var bigString3 = $"1 => : {someVariableOne}," +
+                            $" 2 => : {someVariableTwo}";
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Sztuczki w C#  : Null Conditional ElvisOperator
+        </span></span>
+    </section> 
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">7 : Null Conditional ElvisOperator</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        public class ShippingStage
+                        {
+                            public int? Value { get; set; }
+                        }
+                
+                        public class ProductStage
+                        {
+                            public ShippingStage Shipping { get; set; }
+                        }
+                
+                        public class Product
+                        {
+                            public ProductStage Stage { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">7 :  Null Conditional ElvisOperator</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        Product p1 = new Product();
+                        Product p2 = new Product()
+                        { Stage = new ProductStage() };
+            
+                        Product p3 = new Product()
+                        {
+                            Stage = new ProductStage()
+                            { Shipping = new ShippingStage() }
+                        };
+            
+                        Product p4 = new Product()
+                        {
+                            Stage = new ProductStage()
+                            {
+                                Shipping = new ShippingStage()
+                                { Value = 2 }
+                            }
+                        };
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">7 :  Null Conditional ElvisOperator</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        int val = 0;
+                        if (p1.Stage != null &&
+                            p1.Stage.Shipping != null &&
+                            p1.Stage.Shipping.Value != null)
+                            val = p1.Stage.Shipping.Value.Value;
+            
+                        if (p4.Stage != null && p4.Stage.Shipping
+                            != null && p4.Stage.Shipping.Value != null)
+                            val = p4.Stage.Shipping.Value.Value;
+            
+                        var value = p1?.Stage?.Shipping?.Value;
+                        var value2 = p2?.Stage?.Shipping?.Value;
+                        var value3 = p3?.Stage?.Shipping?.Value;
+                        var value4 = p4?.Stage?.Shipping?.Value;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/stage-01.PNG" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Sztuczki w C# : name of
+        </span></span>
+    </section> 
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">8 : name of</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 42px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 42px !important;">
+                        string stefan = "";
+                        string na = nameof(stefan);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">8 : name of</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        private static readonly Logger _logger = new Logger();
+
+                        public static void ShowGamer(Gamer currentGamer)
+                        {
+                            if (currentGamer == null)
+                                _logger.Error("Argument currentGamer is not provided");
+                
+                
+                            if (currentGamer == null)
+                                _logger.Error($"Argument {nameof(currentGamer)} is not provided");
+                
+                            //...
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Sztuczki w C# : Interface
+        </span></span>
+    </section> 
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/17.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">8 : Interface</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface IStock
+                        {
+                            void Calculate();
+                    
+                            //defaults
+                            void CalculateSubTotal()
+                            {
+                                Console.WriteLine("Calc Sub");
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">8 : Interface</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+                        public class CDProjectRedStock : IStock
+                        {
+                            public void Calculate()
+                            {
+                                Console.WriteLine("Calc");
+                            }
+                    
+                            public void CalculateSubTotal()
+                            {
+                                Console.WriteLine("New Calc Sub");
+                            }
+                        }
+                    
+                        public class BankPolskiStock : IStock
+                        {
+                            public void Calculate()
+                            {
+                                Console.WriteLine("Calc");
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Pytania/Podchwytliwe pytania-14.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Async Problemy
+        </span></span>
+    </section> 
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Async Problemy : Nie mieszać Task API z async i await
+        </span></span>
+    </section> 
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Nie mieszać Task API z async i await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        static async Task Main()
+                        {
+                            await What();
+                        }
+                
+                        static Task What()
+                        {
+                            return new Task(
+                                () => Console.WriteLine("1"));
+                
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Nie mieszać Task API z async i await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        static async Task Main()
+                        {
+                            Task t = What();
+                            await t;
+                
+                            var s = t.Status;
+                        }
+                
+                        static Task What()
+                        {
+                            return new Task(
+                                () => Console.WriteLine("1"));
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Nie mieszać Task API z async i await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 38px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 38px !important;">
+                        await Task.Run
+                        (
+                            () => DoExpensiveOperation(someParameter)
+                        );
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide creamGrey ggg">
+        <span class="shout colors">Async Problemy : <br /><span>Podchwytliwe pytania z Task.Delay
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytliwe pytania z Task.Delay</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+
+                        private static string result;
+
+                        static void Main()
+                        {
+                            SaySomething();
+                            Console.WriteLine(result);
+                        }
+                    
+                        static async Task&#x3C;int&#x3E; SaySomething()
+                        {
+                            await Task.Delay(10);
+                            result = "Hello!";
+                            return 1;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytliwe pytania z Task.Delay</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+
+                        private static string result;
+
+                        static void Main()
+                        {
+                            SaySomething();
+                            Console.WriteLine(result);
+                        }
+                    
+                        static async Task&#x3C;int&#x3E; SaySomething()
+                        {
+                            await Task.Delay(10);
+                            result = "Hello!";
+                            return 1;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    [NIC]
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytlie pytania z Task.Delay</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+
+                        private static string result;
+
+                        static void Main()
+                        {
+                            SaySomething();
+                            Console.WriteLine(result);
+                        }
+                
+                        static async Task&#x3C;int&#x3E; SaySomething()
+                        {
+                            Thread.Sleep(10);
+                            result = "Hello!";
+                            return 1;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytlie pytania z Task.Delay</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+
+                        private static string result;
+
+                        static void Main()
+                        {
+                            SaySomething();
+                            Console.WriteLine(result);
+                        }
+                
+                        static async Task&#x3C;int&#x3E; SaySomething()
+                        {
+                            Thread.Sleep(10);
+                            result = "Hello!";
+                            return 1;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    Hello
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide creamGrey ggg">
+        <span class="shout colors"><span>Async Problemy : Podchwytliwe pytanie na temat domknięć w C#
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytliwe pytanie na temat domknięć w C#</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+
+                        List&#x3C;Task&#x3E; tasks = new List&#x3C;Task&#x3E;();
+
+                        for (int i = 0; i &#x3C; 80; i++)
+                        {
+                            tasks.Add(new Task(() =&#x3E; Console.WriteLine(i)));
+                        }
+
+                        foreach (var item in tasks)
+                        {
+                            item.RunSynchronously();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytliwe pytanie na temat domknięć w C#</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+
+                        List&#x3C;Task&#x3E; tasks = new List&#x3C;Task&#x3E;();
+
+                        for (int i = 0; i &#x3C; 80; i++)
+                        {
+                            tasks.Add(new Task(() =&#x3E; Console.WriteLine(i)));
+                        }
+
+                        foreach (var item in tasks)
+                        {
+                            item.RunSynchronously();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    80
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytliwe pytanie na temat domknięć w C#</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+
+                        for (int i = 0; i < 80; i++)
+                        {
+                            Task.Run(() => Console.WriteLine(i));
+                        }
+
+                        for (int i = 0; i < 11; i++)
+                        {
+                            Task.Run(() => Console.WriteLine(i));
+                        }
+
+                        Console.Read();
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytliwe pytanie na temat domknięć w C#</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+
+                        for (int i = 0; i < 80; i++)
+                        {
+                            Task.Run(() => Console.WriteLine(i));
+                        }
+
+                        for (int i = 0; i < 11; i++)
+                        {
+                            Task.Run(() => Console.WriteLine(i));
+                        }
+
+                        Console.Read();
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    [Wynik będzie losowy i liczby będą się powtarzać]
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/CO.PNG" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytliwe pytanie na temat domknięć w C#</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+
+                        List&#x3C;Task&#x3E; tasks = new List&#x3C;Task&#x3E;();
+
+                        for (int i = 0; i &#x3C; 80; i++)
+                        {
+                            int newi = i;
+                            tasks.Add(new Task(() =&#x3E; Console.WriteLine(newi)));
+                        }
+
+                        foreach (var item in tasks)
+                        {
+                            item.RunSynchronously();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie full">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async Problemy : Podchwytliwe pytanie na temat domknięć w C#</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+
+                        List&#x3C;Task&#x3E; tasks = new List&#x3C;Task&#x3E;();
+
+                        for (int i = 0; i &#x3C; 80; i++)
+                        {
+                            int newi = i;
+                            tasks.Add(new Task(() =&#x3E; Console.WriteLine(newi)));
+                        }
+
+                        foreach (var item in tasks)
+                        {
+                            item.RunSynchronously();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    [0,1,2...79]
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamGrey ggg">
+        <span class="shout colors">JavaScript<br /><span>To samo pytanie można zadać w JavaScript
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">JavaScript To samo pytanie można zadać w JavaScript</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 34px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 34px !important;">
+                        for(var i=0; i&#x3C;4; i++) {
+
+                            setTimeout(
+                              (function(x) {
+                                return function() {  
+                                  console.log(&#x22;i==&#x22;+i+&#x22;, x==&#x22;+x);
+                                };
+
+                              })(i) 
+                            , i*100);
+
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container-answerquestion">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">JavaScript To samo pytanie można zadać w JavaScript</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+
+                        for(var i=0; i&#x3C;4; i++) {
+
+                            setTimeout(
+                              (function(x) {
+                                return function() {  
+                                  console.log(&#x22;i==&#x22;+i+&#x22;, x==&#x22;+x);
+                                };
+
+                              })(i) 
+                            , i*100);
+
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    i==4,x==0,i==4,x==1...
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">Async problemy : Jak zrobić deadlock
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async problemy : Jak zrobić deadlock</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+
+                        private readonly static string _url = &#x22;https://postman-echo.com/delay/10&#x22;;
+
+                        private void Button_Click(object sender, RoutedEventArgs e)
+                        {
+                            ResultTextBlock.Text = &#x22;&#x22;;
+                            ResultTextBlock.Text += &#x22;Przed MyGetStringAsync()&#x22;;
+                            var result = MyGetStringAsync().Result;
+                            ResultTextBlock.Text += &#x22;Napisze co&#x15B; w mi&#x119;dzyczasie&#x22;;
+                            ResultTextBlock.Text = result;
+                            ResultTextBlock.Text += &#x22;Po MyGetStringAsync()&#x22;;
+                        }
+                        
+                        public async Task&#x3C;string&#x3E; MyGetStringAsync()
+                        {
+                            using (HttpClient httpClient = new HttpClient())
+                            {
+                                return await httpClient.GetStringAsync(_url);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async problemy : Jak zrobić deadlock</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 19px !important;">
+                        private void Button_Click(object sender, RoutedEventArgs e)
+                        {
+                            ResultTextBlock.Text = &#x22;&#x22;;
+                            ResultTextBlock.Text += &#x22;Przed MyGetStringAsync()&#x22;;
+                            var result = MyGetStringAsync().Result;
+                            ResultTextBlock.Text += &#x22;Napisze co&#x15B; w mi&#x119;dzyczasie&#x22;;
+                            ResultTextBlock.Text = result;
+                            ResultTextBlock.Text += &#x22;Po MyGetStringAsync()&#x22;;
+                        }
+                        
+                        public async Task&#x3C;string&#x3E; MyGetStringAsync()
+                        {
+                            using (HttpClient httpClient = new HttpClient())
+                            {
+                                return await httpClient.GetStringAsync(_url)
+                                    .ConfigureAwait(false);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Pattern Matching w C# 8.0 i 9.0
+        </span></span>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Patter Matching w switch
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : przykład </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        public class Weather
+                        {
+                            public DateTime Date { get; set; }
+                    
+                            public int TemperatureC { get; set; }
+                    
+                            public string Desc { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : przykład </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        public static List&#x3C;Weather&#x3E; CreateExample()
+                        {
+                            DateTime now = DateTime.Now;
+                            var rng = new Random();
+                
+                            var exampleCollection = Enumerable.Range(1, 14).Select
+                                (index =&#x3E; new Weather
+                                {
+                                    Date = now.AddDays(index),
+                                    TemperatureC = rng.Next(-10, 40)
+                                }
+                            ).ToList();
+                
+                            return exampleCollection;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : przykład </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        foreach (var weather in exampleList)
+                        {
+                            weather.Desc = weather.TemperatureC switch
+                            {
+                                <= 6 and > 1 => "Nie ciekawie. Ubrać sie trzeba",
+                                10 or 9 or 8 or 7 => "Zimno",
+                                11 => "Uwaga Łatwo zachorować",
+                                12 => "Uwaga Kurtka",
+                                13 => "Uwaga",
+                                <= 15 => "Super",
+                                <= 20 => "Ok",
+                                <= 28 => "Gorąco",
+                                >= 30 => "Upał",
+                                _ => "Nie wiem"
+                            };
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/pattermatching-01.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : przykład </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        public class Pizza
+                        {
+                            public string Name { get; set; }
+                    
+                            public bool HasMeat { get; set; }
+                    
+                            public bool HasAnanas { get; set; }
+                    
+                            public void Deconstruct(out string name, out bool hasMeat, out bool hasAnanas)
+                            {
+                                name = Name;
+                                hasMeat = HasMeat;
+                                hasAnanas = HasAnanas;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : przykład </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        public class Pizza
+                        {
+                            public string Name { get; set; }
+                    
+                            public bool HasMeat { get; set; }
+                    
+                            public bool HasAnanas { get; set; }
+                    
+                            public void Deconstruct(out string name, out bool hasMeat, out bool hasAnanas)
+                            {
+                                name = Name;
+                                hasMeat = HasMeat;
+                                hasAnanas = HasAnanas;
+                            }
+
+                            public string Desc { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : przykład </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        public static List&#x3C;Pizza&#x3E; CreateExample()
+                        {
+                            var rng = new Random();
+                
+                            var exampleCollection = Enumerable.Range(1, 14).Select
+                                (index =&#x3E; new Pizza
+                                {
+                                    Name = &#x22;P&#x22; + index.ToString() + rng.Next(1, 10).ToString(),
+                                    HasMeat = rng.NextDouble() &#x3E;= 0.5,
+                                    HasAnanas = rng.NextDouble() &#x3E;= 0.5
+                                }
+                            ).ToList();
+                
+                            return exampleCollection;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : przykład </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        Pizza a = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Marinara" };
+                        Pizza b = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Peperoni" };
+            
+                        var (name, hasananas, hasmeat) = a;
+                        var (name2, hasananas2, hasmeat2) = b;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Positional Pattern
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Positional Pattern </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        var exampleList = CreateExample();
+
+                        Pizza a = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Marinara" };
+                        Pizza b = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Peperoni" };
+                        exampleList.Add(b); exampleList.Add(a);
+            
+                        foreach (var pizza in exampleList)
+                        {
+                            pizza.Desc = pizza switch
+                            {
+                                ("1", true, false) => "Taką zjem",
+                                ("2", true, true) => "Ujdzie",
+                                ("Peperoni", _, _) => "Moja ulubiona",
+                                ("Marinara", _, _) => "Często jadam",
+                                (_, _, true) => "Tej nie zjem",
+                                _ => "Nie wiem"
+                            };
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Positional Pattern </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        var exampleList = CreateExample();
+
+                        Pizza a = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Marinara" };
+                        Pizza b = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Peperoni" };
+                        exampleList.Add(b); exampleList.Add(a);
+            
+                        foreach (var pizza in exampleList)
+                        {
+                            pizza.Desc = pizza switch
+                            {
+                                ("2", _, var czymaAnans) => $"Pizza z Ananasem : {czymaAnans}",
+                                { HasMeat : true} => "Ma mieso"
+                            };
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/pattermatching-02.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Positional Pattern </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        var exampleList = CreateExample();
+
+                        Pizza a = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Marinara" };
+                        Pizza b = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Peperoni" };
+                        exampleList.Add(b); exampleList.Add(a);
+            
+                        foreach (var pizza in exampleList)
+                        {
+                            pizza.Desc = pizza switch
+                            {
+                                ("2", _, var czymaAnans) => $"Pizza z Ananasem : {czymaAnans}",
+                            };
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/pattermatching-03.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Positional Pattern </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        var exampleList = CreateExample();
+
+                        Pizza a = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Marinara" };
+                        Pizza b = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Peperoni" };
+                        exampleList.Add(b); exampleList.Add(a);
+            
+                        foreach (var pizza in exampleList)
+                        {
+                            pizza.Desc = pizza switch
+                            {
+                                ("2", _, var czymaAnans) => $"Pizza z Ananasem : {czymaAnans}",
+                            };
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Tuple Pattern
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Tuple Pattern </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        var exampleList = CreateExample();
+
+                        Pizza a = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Marinara" };
+                        Pizza b = new Pizza() { HasAnanas = false, HasMeat = true, Name = "Peperoni" };
+                        exampleList.Add(b); exampleList.Add(a);
+            
+                        foreach (var pizza in exampleList)
+                        {
+                            pizza.Desc = (pizza.HasMeat, pizza.HasAnanas) switch
+                            {
+                                (true, false) => "Super",
+                                (false, true) => "Poprostu nie",
+                                (false, false) => "Bez mięsa ?"
+                            };
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide cream compact smaller">
+        <h2>Patterns w C# 9.0</h2>
+        <ol>
+            <li class="next">Łączące "and"</li>
+            <li class="next">Lub "or"</li>
+            <li class="next">Negacji "not"</li>
+            <li class="next">Parenthesized  (nawisowy) pattern</li>
+            <li class="next">Type pattern</li>
+            <li class="next">Relational pattern</li>
+        </ol>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Type pattern
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Type pattern</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        public class GreenTest : Test
+                        {
+                    
+                        }
+                    
+                        public class RedTest : Test
+                        {
+                    
+                        }
+                    
+                        public class Test
+                        {
+                    
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Type pattern</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        public static List&#x3C;Test&#x3E; CreateExample()
+                        {
+                            var rng = new Random();
+                            
+                            List&#x3C;Test&#x3E; tests = new List&#x3C;Test&#x3E;();
+                            
+                            for (int i = 0; i &#x3C; 15 ; i++)
+                            {
+                                if (rng.Next(1,100)  % 2 == 0)
+                                    tests.Add(new GreenTest());
+                                else
+                                    tests.Add(new RedTest());
+                            }
+                            
+                            return tests;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Type pattern</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        var exampleList = CreateExample();
+
+                        foreach (var test in exampleList)
+                        {
+                            string outcome = test switch
+                            {
+                                GreenTest => "Postive",
+                                RedTest => "Negative",
+                                _ => "unknow"
+                            };
+                            Console.WriteLine(outcome);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>Relational pattern
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Relational pattern</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+                        public class GreenTest : Test
+                        {
+                    
+                        }
+                    
+                        public class RedTest : Test
+                        {
+                    
+                        }
+                    
+                        public class Test
+                        {
+                            public bool IsValid { get; set; }
+                            public DateTimeOffset TestedOn { get; set; }
+                    
+                            public void Deconstruct(out int minutesSinceTest, out bool isValid)
+                            {
+                                minutesSinceTest = (int)(DateTimeOffset.UtcNow - TestedOn).TotalMinutes;
+                                isValid = IsValid;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle"> 
+                <h2 class="headerCODE">Patter Matching w switch : Relational pattern</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 18px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        var exampleList = CreateExample();
+
+                        foreach (var test in exampleList)
+                        {
+                            string outcome = test switch
+                            {
+                                ( < 60 * 24 * 2, false) => "Nie poprawny test których jest młodszy niż 2 dni",
+                                GreenTest(> 60 * 24, true) => "Postive, ale warto go po 24 godzinach zrobić ponownie",
+                                _ => "unknow"
+                            };
+                            Console.WriteLine(outcome);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="slide creamG">
+        <span class="shout colors"><span>Dzięki za obecność
+        </span></span>
+    </section>
+
+    <!-- <div class="progress"></div> -->
+    <footer class="badge badge-top-left">
+        <a href="#" class="fullscreen">Fullscreen</a>
+    </footer>
+
+    <script src="vendors/gamepad/gamepad.js"></script>
+    <script src="vendors/shower/shower.min.js"></script>
+    <script src="vendors/shower-gamepad/shower.gamepad.js"></script>
+
+    <!-- Prism.js -->
+    <script src="vendors/prism/prism.js"></script>
+    <script src="vendors/prism/custom-prism.js"></script>
+
+</body>
+
+</html>
